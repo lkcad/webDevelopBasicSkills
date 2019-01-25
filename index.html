@@ -1,67 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>测试</title>
-		<style>
-			#main{
-				height:2000px;
-				background: #eee;
-			}
-			
-			#backTop{
-				position: fixed;
-				right: 10px;
-				bottom: 40px;
-			}
-		</style>
-	</head>
-	<body>
-		<a href="#" id="backTop">返回顶部</a>
-		<div id="main">
-		</div>
-	</body>
-	<script type="text/javascript">
-		function ScrollTopCheck (container,target){
-			if(!(this instanceof ScrollTopCheck)){
-				return new ScrollTopCheck(container,target)
-			}
-			if(!(checkIsDom(container)||container===window)||!checkIsDom(target)){
-				throw Error('container target为必须参数')
-			}
-			this.container=container;
-			this.target=target;
-			this.init()
-			return this;
-		}
-		
-		function checkIsDom(obj){
-			if(obj&&obj.nodeType && obj.nodeType===1 && typeof obj.nodeName === 'string'){
-				return true
-			}
-			return false;
-		}
-		
-		var fn=ScrollTopCheck.prototype;
-		fn.init=function(){
-			this.container.addEventListener('scroll',this.scroll.bind(this))
-			console.error(this.container)
-		}
-		
-		fn.scroll=function(e){
-			console.log(this.container)
-		}
-		
-		fn.addHidden=function(){
-			
-		}
-		
-		fn.removeHidden=function(){
-			
-		}
-		
-		var a=ScrollTopCheck(window,document.querySelector('#backTop'))
-		console.error('aaaaaaa',a)
-	</script>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>测试</title>
+    <style>
+
+        #main {
+            height: 2000px;
+            background: linear-gradient(to bottom, blue, white);
+        }
+
+        #backTop {
+            position: fixed;
+            right: 10px;
+            bottom: 40px;
+        }
+
+        .container2 {
+            height: 400px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<a href="#" id="backTop" hidden>返回顶部</a>
+<div id="main">
+
+    <div class="container2">
+        <div style="height: 900px;background: red">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias aperiam commodi dolorem enim,
+            excepturi id iure magnam maiores minus, nemo officiis praesentium quis repellendus rerum similique soluta
+            totam vero!
+        </div>
+    </div>
+</div>
+</body>
+<script src="./index.js"></script>
+<script type="text/javascript">
+    var a = ScrollTopCheck(window, document.querySelector('#backTop'))
+    // var b = ScrollTopCheck(document.querySelector('.container2'), document.querySelector('#backTop'))
+    console.error('aaaaaaa', a)
+    console.error('bbbbbb', b)
+</script>
 </html>
