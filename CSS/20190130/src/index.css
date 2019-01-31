@@ -1,47 +1,57 @@
 .icon-delete {
-    background: url("./delete.png");
+    --icon-width: 20px;
+    background-image: url("./delete.png");
     display: inline-block;
     font-size: 0;
-    width: 20px;
-    height: 20px;
+    width: var(--icon-width);
+    height: var(--icon-width);
     background-size: cover;
-}
-
-.css-tips {
-    position: relative;
-}
-
-.css-tips:hover::after {
-    content: attr(data-title);
-    font-size: 14px;
-    text-align: center;
-    position: absolute;
-    border-radius: 2px;
-    display: inline-block;
-    color: #ff0;
-    padding: 2px 4px;
-    white-space: nowrap;
-    margin-top: calc(-1em - 13px);
-    margin-left: calc(-50% + 1px);
-}
-
-.css-tips:hover::before {
-    content: "";
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    transform: rotate(45deg);
-    margin-top: -8px;
-    text-align: center;
-    margin-left: 7px;
-}
-
-.css-tips:hover::before, .css-tips:hover::after {
-    background: rgb(0, 0, 0);
 }
 
 .pos {
     position: absolute;
     top: 40px;
     left: 40px;
+}
+
+
+.css-tips {
+    position: relative;
+    --font-size: 14px;
+    --arrow-width: 8px;
+    --base-Y-offset: 3px
+}
+
+.css-tips:hover::after {
+    position: absolute;
+    margin-top: calc(0px - (1.41 / 2) * var(--arrow-width) - var(--base-Y-offset));;
+    transform: translate(calc(-50% + var(--icon-width) / 2), -100%);
+}
+
+.css-tips:hover::before {
+    position: absolute;
+    margin-top: calc(0px - var(--arrow-width) * ((1.41 + 1) / 2) - var(--base-Y-offset));
+    margin-left: calc((var(--icon-width) - var(--arrow-width)) / 2);
+}
+
+
+.css-tips:hover::after {
+    content: attr(data-title);
+    font-size: var(--font-size);
+    border-radius: 2px;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 4px;
+    white-space: nowrap;
+}
+
+.css-tips:hover::before {
+    content: "";
+    width: var(--arrow-width);
+    height: var(--arrow-width);
+    transform: rotate(45deg);
+}
+
+.css-tips:hover::before, .css-tips:hover::after {
+    background: rgb(0, 0, 0);
 }
