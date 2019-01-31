@@ -19,18 +19,26 @@
     position: relative;
     --font-size: 14px;
     --arrow-width: 8px;
-    --base-Y-offset: 3px
+    --base-Y-offset: 0px
 }
 
-.css-tips:hover::after {
-    position: absolute;
+.css-tips[data-title-dir='top']:hover::after {
     margin-top: calc(0px - (1.41 / 2) * var(--arrow-width) - var(--base-Y-offset));;
     transform: translate(calc(-50% + var(--icon-width) / 2), -100%);
 }
 
-.css-tips:hover::before {
-    position: absolute;
+.css-tips[data-title-dir='top']:hover::before {
     margin-top: calc(0px - var(--arrow-width) * ((1.41 + 1) / 2) - var(--base-Y-offset));
+    margin-left: calc((var(--icon-width) - var(--arrow-width)) / 2);
+}
+
+.css-tips[data-title-dir='bottom']:hover::after {
+    margin-top: calc((1.41 / 2) * var(--arrow-width) + var(--base-Y-offset) + var(--icon-width));;
+    transform: translate(calc(-50% + var(--icon-width) / 2), 0);
+}
+
+.css-tips[data-title-dir='bottom']:hover::before {
+    margin-top: calc(0px - var(--arrow-width) * ((1.41 / 2 - 1)) + var(--icon-width) + var(--base-Y-offset));
     margin-left: calc((var(--icon-width) - var(--arrow-width)) / 2);
 }
 
@@ -53,5 +61,6 @@
 }
 
 .css-tips:hover::before, .css-tips:hover::after {
+    position: absolute;
     background: rgb(0, 0, 0);
 }
