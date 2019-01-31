@@ -42,6 +42,19 @@
     margin-left: calc((var(--icon-width) - var(--arrow-width)) / 2);
 }
 
+.css-tips[data-title-dir='right']:hover::after {
+    margin-top: calc(var(--icon-width) / 2);
+    margin-left: calc(100% + var(--base-Y-offset) + 6px + (1 / 1.41) * var(--arrow-width));
+    transform: translate(0, -50%);
+}
+
+.css-tips[data-title-dir='right']:hover::before {
+    margin-top: calc(var(--icon-width) / 2);
+    transform: translate(0, -50%) rotate(45deg);
+    margin-left: calc(100% + var(--base-Y-offset) + 6px + (((1.41 - 1) / 2)) * var(--arrow-width))
+
+}
+
 
 .css-tips:hover::after {
     content: attr(data-title);
